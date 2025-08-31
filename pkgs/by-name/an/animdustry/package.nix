@@ -62,7 +62,7 @@ buildNimPackage (finalAttrs: {
     "-d:NimblePkgVersion=${finalAttrs.version}"
   ];
   requiredNimVersion = 1;
-  lockFile = callPackage ./lock.nix { };
+  lockFile = ./lock.json;
 
   installPhase = ''
     runHook preInstall
