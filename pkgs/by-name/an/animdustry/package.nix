@@ -93,7 +93,7 @@ buildNimPackage (finalAttrs: {
       the anime gacha bullet hell rhythm game
       created as a mindustry april 1st event
     '';
-    license = lib.licenses.gpl3; # Listed in animdustry.nimble
+    license = lib.licenses.unfree;
     platforms = lib.platforms.all;
     maintainers = with lib.maintainers; [
       Ezjfc
