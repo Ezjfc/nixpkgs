@@ -1,6 +1,7 @@
 {
   fetchFromGitHub,
   buildNimPackage,
+  callPackage,
 }:
 buildNimPackage {
   pname = "fau";
@@ -15,5 +16,5 @@ buildNimPackage {
   };
 
   requiredNimVersion = 1;
-  lockFile = ./lock.json;
+  lockFile = callPackage ./lock.nix { };
 }
