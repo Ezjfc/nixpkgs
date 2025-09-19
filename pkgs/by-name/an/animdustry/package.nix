@@ -32,7 +32,7 @@ in buildNimPackage (finalAttrs: {
     owner = "Anuken";
     repo = "animdustry";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-0CnMKh+vgcrJRdMuOSSIcVLqRtfpFrQyH/UekpRbBOU=";
+    hash = "sha256-ZEcjZ6eowwKDYbMX1INXYEtBVhBT6JlHekQlESgjiRM";
   };
 
   buildInputs = [
@@ -64,20 +64,21 @@ in buildNimPackage (finalAttrs: {
   requiredNimVersion = 1;
   lockFile = ./lock.json;
 
+  # WARNING: Accessing /tmp highly impure, should workaround Animdustry src.
   preBuild = ''
-    [ -e "$TMP/soloud" ] && echo "assertion error: $TMP/soloud not empty"
-    cp -r ${soloud} $TMP/soloud
-    faupack -p:"./assets-raw/sprites" -o:"./assets/atlas" --outlineFolder=outlined
+    [ -e "/tmp/soloud" ] && echo "assertion error: /tmp/soloud not empty"
+    cp -r ${soloud} /tmp/soloud
+    ${fau}/bin/faupack -p:"./assets-raw/sprites" -o:"./assets/atlas" --outlineFolder=outlined
   '';
 
-  # installPhase = ''
-  #   runHook preInstall
-  #
-  #   mv $out/bin/main $out/bin/animdustry
-  #   install -Dm644 ./assets/icon.png $out/share/icons/hicolor/64x64/apps/animdustry.png
-  #
-  #   runHook postInstall
-  # '';
+  installPhase = ''
+    runHook preInstall
+
+    mv $out/bin/main $out/bin/animdustry
+    install -Dm644 ./assets/icon.png $out/share/icons/hicolor/64x64/apps/animdustry.png
+
+    runHook postInstall
+  '';
 
   desktopItems = makeDesktopItem {
       name = "Animdustry";
