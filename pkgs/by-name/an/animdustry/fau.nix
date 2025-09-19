@@ -4,13 +4,13 @@
 }:
 buildNimPackage {
   pname = "fau";
-  version = "0-unstable-2022-05-14";
+  version = "0-unstable-2022-04-22";
 
   src = fetchFromGitHub {
     owner = "Anuken";
     repo = "fau";
-    rev = "73df4a699873d0f82fd612a2a2ac63c21d3f2233";
-    hash = "sha256-9zwmFinDJV4+R/aiVVOQ/Bv30jX7NHJyufzMNWHGA+k=";
+    rev = "adbf05f2a83af3a277b50a4457b5f3e90469060a";
+    hash = "sha256-0CnMKh+vgcrJRdMuOSSIcVLqRtfpFrQyH/UekpRbBOU=";
     fetchSubmodules = true;
   };
 

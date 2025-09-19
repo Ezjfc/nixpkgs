@@ -16,15 +16,23 @@
   libXxf86vm,
   libpulseaudio,
   fau ? callPackage ./fau.nix { }
-}: buildNimPackage (finalAttrs: {
+}: let
+  soloud = fetchFromGitHub {
+    owner = "Anuken";
+    repo = "soloud";
+    rev = "60f27d7d63d2d3e6712e09cd7457320c68959f11";
+    hash = "sha256-WGQH3fPeAvZ/7jKqW3tg5/Y1Hz3taeH8xX9c45t/RpA=";
+    fetchSubmodules = true;
+  };
+in buildNimPackage (finalAttrs: {
   pname = "animdustry";
-  version = "1.2";
+  version = "1.0";
 
   src = fetchFromGitHub {
     owner = "Anuken";
     repo = "animdustry";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-RND5AhlD9uTMg9Koz5fq7WMgJt+Ajiyi6K60WFbF0bg=";
+    hash = "sha256-0CnMKh+vgcrJRdMuOSSIcVLqRtfpFrQyH/UekpRbBOU=";
   };
 
   buildInputs = [
@@ -56,14 +64,20 @@
   requiredNimVersion = 1;
   lockFile = ./lock.json;
 
-  installPhase = ''
-    runHook preInstall
-
-    mv $out/bin/main $out/bin/animdustry
-    install -Dm644 ./assets/icon.png $out/share/icons/hicolor/64x64/apps/animdustry.png
-
-    runHook postInstall
+  preBuild = ''
+    [ -e "$TMP/soloud" ] && echo "assertion error: $TMP/soloud not empty"
+    cp -r ${soloud} $TMP/soloud
+    faupack -p:"./assets-raw/sprites" -o:"./assets/atlas" --outlineFolder=outlined
   '';
+
+  # installPhase = ''
+  #   runHook preInstall
+  #
+  #   mv $out/bin/main $out/bin/animdustry
+  #   install -Dm644 ./assets/icon.png $out/share/icons/hicolor/64x64/apps/animdustry.png
+  #
+  #   runHook postInstall
+  # '';
 
   desktopItems = makeDesktopItem {
       name = "Animdustry";

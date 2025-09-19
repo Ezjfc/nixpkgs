@@ -2,18 +2,6 @@
   "depends": [
     {
       "method": "fetchzip",
-      "path": "/nix/store/3qxib3f1pglhdymz3kbc4dg361vlfz3a-source",
-      "rev": "f4cc097ca9694f17feced9f82994f583ef7911fe",
-      "sha256": "041cshfzgb4fb1xhamyhrx22dvib74d86y7qnbp6rm1n56mkqpkq",
-      "url": "https://github.com/jangko/msgpack4nim/archive/f4cc097ca9694f17feced9f82994f583ef7911fe.tar.gz",
-      "ref": "v0.4.4",
-      "packages": [
-        "msgpack4nim"
-      ],
-      "srcDir": "src"
-    },
-    {
-      "method": "fetchzip",
       "path": "/nix/store/fahrda7s5h7nw5nla0rhlm14vnz3nl7k-source",
       "rev": "987eb0d2270e998f9db317840e3f3608527274ee",
       "sha256": "0ihx7y0yny7ziq56mczzhkyjvkpgr4rbzfw7qqn2kizahv0y7wv3",
@@ -50,6 +38,18 @@
     },
     {
       "method": "fetchzip",
+      "path": "/nix/store/g2wla1wibsj0dnmvbrz37xh2ngdy3wbp-source",
+      "rev": "cb24d3f22780276d3d79453ce3f9507adc1c3fe6",
+      "sha256": "0r0qy2xcs8dssvvg98bbxizq0awrkfksjbb0cahfy2bxj1d5rrn8",
+      "srcDir": "src",
+      "url": "https://github.com/Endermanbugzjfc/fau/archive/cb24d3f22780276d3d79453ce3f9507adc1c3fe6.tar.gz",
+      "subDir": "",
+      "packages": [
+        "fau"
+      ]
+    },
+    {
+      "method": "fetchzip",
       "path": "/nix/store/0nj37jsv6fcm4pvp15inl5212lhsnqji-source",
       "rev": "c87340c9a09fffc794f588c4a19b53c8d71cd6f6",
       "sha256": "0wc1skj1j0b4wy5lw0dj7fslfb6q14j3ngyh17v030w9gdy1pbsc",
@@ -62,14 +62,14 @@
     },
     {
       "method": "fetchzip",
-      "path": "/nix/store/lzhf46islyz8h33f149nnbvpg9lawrxd-source",
-      "rev": "be73f6862533c4cccedfac512d7766c8a30f3122",
-      "sha256": "1y95n55hnjdpzjz6hx45nqp3i08aqq5qbjd641j168dv6qipqk3d",
+      "path": "/nix/store/bzcq8q439rdsqhhihikzv3rsx4l4ybdm-source",
+      "rev": "ea811bec7fa50f5abd3088ba94cda74285e93f18",
+      "sha256": "1720iqsxjhqmhw1zhhs7d2ncdz25r8fqadls1p1iry1wfikjlnba",
       "srcDir": "src",
-      "url": "https://github.com/Anuken/glfm/archive/be73f6862533c4cccedfac512d7766c8a30f3122.tar.gz",
+      "url": "https://github.com/treeform/jsony/archive/ea811bec7fa50f5abd3088ba94cda74285e93f18.tar.gz",
       "subDir": "",
       "packages": [
-        "glfm"
+        "jsony"
       ]
     },
     {
@@ -82,20 +82,6 @@
       "subDir": "",
       "packages": [
         "nimsimd"
-      ]
-    },
-    {
-      "method": "git",
-      "path": "/nix/store/6ndsxzh74l47xcxv4658plingybwywx3-nimsoloud-c74878d",
-      "rev": "c74878dcb60fd2e2af84f894a8a8ffe901aecd51",
-      "sha256": "08lzvggv4sa61kk1r5bhk22gfn20mqfi3yvmi55dyfwx6d7kvhp7",
-      "srcDir": "src",
-      "url": "https://github.com/Anuken/nimsoloud",
-      "subDir": "",
-      "fetchSubmodules": true,
-      "leaveDotGit": false,
-      "packages": [
-        "nimsoloud"
       ]
     },
     {
@@ -124,24 +110,26 @@
     },
     {
       "method": "fetchzip",
-      "path": "/nix/store/ibfsmhmx9zgfb4dvzix2a7bmk7kvdl40-source",
-      "rev": "35ec546322abe76b69c53baeb4d2a5f3f762ea08",
-      "sha256": "044slvx78c14rmp7cqdh7sasir1043avqmkpcc0ir8h6ml668c66",
+      "path": "/nix/store/yvqanpy45j7vvcnrgy1lrnyb0alnhg35-source",
+      "rev": "d30a512379330550c3c2255f32727aa2e8edcd81",
+      "sha256": "058q4q2c2q5fw9949q4vksxj116m152rph8sdfx7lcr2ajr1m36l",
       "srcDir": "src",
-      "url": "https://github.com/Anuken/staticglfw/archive/35ec546322abe76b69c53baeb4d2a5f3f762ea08.tar.gz",
+      "url": "https://github.com/Anuken/staticglfw/archive/d30a512379330550c3c2255f32727aa2e8edcd81.tar.gz",
       "subDir": "",
       "packages": [
         "staticglfw"
       ]
     },
     {
-      "method": "fetchzip",
-      "path": "/nix/store/7dly89kba9s2ik8cxiicsxzc3jqnlz2h-source",
+      "method": "git",
+      "path": "/nix/store/99l41kv7h7nb0rcwarnvkgjykm771h5w-stb_image-Nim-ba5f452",
       "rev": "ba5f45286bfa9bed93d8d6b941949cd6218ec888",
       "sha256": "13csi17rpaclvm7ji3rw1hcbb1z6x5270819nabinfw1x59al5yz",
       "srcDir": "",
-      "url": "https://github.com/define-private-public/stb_image-Nim/archive/ba5f45286bfa9bed93d8d6b941949cd6218ec888.tar.gz",
+      "url": "https://github.com/define-private-public/stb_image-Nim",
       "subDir": "",
+      "fetchSubmodules": true,
+      "leaveDotGit": false,
       "packages": [
         "stb_image"
       ]
