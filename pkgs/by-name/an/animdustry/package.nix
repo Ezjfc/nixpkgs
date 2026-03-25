@@ -77,13 +77,15 @@ buildNimPackage (finalAttrs: {
     runHook postInstall
   '';
 
-  desktopItems = makeDesktopItem {
-    name = "Animdustry";
-    exec = "animdustry";
-    icon = "animdustry";
-    desktopName = "Animdustry";
-    categories = [ "Game" ];
-  };
+  desktopItems = [
+    (makeDesktopItem {
+      name = "Animdustry";
+      exec = "animdustry";
+      icon = "animdustry";
+      desktopName = "Animdustry";
+      categories = [ "Game" ];
+    })
+  ];
 
   meta = {
     homepage = "https://github.com/Anuken/animdustry";
