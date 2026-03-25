@@ -64,19 +64,16 @@ buildNimPackage (finalAttrs: {
   '';
 
   installPhase = let
-    libs = [
-      mesa
-    ];
+    libs = [ mesa ];
   in ''
     runHook preInstall
-
     mv $out/bin/main $out/bin/animdustry
-    wrapProgram $out/bin/animdustry \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath libs}" \
-      --set __GLX_VENDOR_LIBRARY_NAME "mesa"
-
+    ${lib.optionalString stdenv.isLinux ''
+      wrapProgram $out/bin/animdustry \
+        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath libs}" \
+        --set __GLX_VENDOR_LIBRARY_NAME "mesa"
+    ''}
     install -Dm644 ./assets/icon.png $out/share/icons/hicolor/64x64/apps/animdustry.png
-
     runHook postInstall
   '';
 
