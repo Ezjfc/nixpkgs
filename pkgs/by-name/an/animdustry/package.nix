@@ -2,6 +2,7 @@
   stdenv,
   lib,
   autoPatchelfHook,
+  makeBinaryWrapper,
   copyDesktopItems,
   makeDesktopItem,
   fetchFromGitHub,
@@ -15,6 +16,7 @@
   libGL,
   libXxf86vm,
   libpulseaudio,
+  mesa,
   fau ? callPackage ./fau.nix { },
 }:
 buildNimPackage (finalAttrs: {
@@ -41,6 +43,7 @@ buildNimPackage (finalAttrs: {
   nativeBuildInputs = [
     fau
     autoPatchelfHook
+    makeBinaryWrapper
     copyDesktopItems
   ];
   runtimeDependencies = [
@@ -60,10 +63,18 @@ buildNimPackage (finalAttrs: {
     ${fau}/bin/faupack -p:"./assets-raw/sprites" -o:"./assets/atlas"
   '';
 
-  installPhase = ''
+  installPhase = let
+    libs = [
+      mesa
+    ];
+  in ''
     runHook preInstall
 
     mv $out/bin/main $out/bin/animdustry
+    wrapProgram $out/bin/animdustry \
+      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath libs}" \
+      --set __GLX_VENDOR_LIBRARY_NAME "mesa"
+
     install -Dm644 ./assets/icon.png $out/share/icons/hicolor/64x64/apps/animdustry.png
 
     runHook postInstall
