@@ -21,7 +21,7 @@
 }:
 buildNimPackage (finalAttrs: {
   pname = "animdustry";
-  version = "1.2-unstable-2024-07-30";
+  version = "1.2-unstable-2025-09-18";
 
   src = fetchFromGitHub {
     owner = "Anuken";
@@ -63,21 +63,19 @@ buildNimPackage (finalAttrs: {
     ${fau}/bin/faupack -p:"./assets-raw/sprites" -o:"./assets/atlas"
   '';
 
-  installPhase =
-    let
-      libs = [ mesa ];
-    in
-    ''
-      runHook preInstall
-      mv $out/bin/main $out/bin/animdustry
-      ${lib.optionalString stdenv.isLinux ''
-        wrapProgram $out/bin/animdustry \
-          --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath libs}" \
-          --set __GLX_VENDOR_LIBRARY_NAME "mesa"
-      ''}
-      install -Dm644 ./assets/icon.png $out/share/icons/hicolor/64x64/apps/animdustry.png
-      runHook postInstall
-    '';
+  installPhase = let
+    libs = [ mesa ];
+  in ''
+    runHook preInstall
+    mv $out/bin/main $out/bin/animdustry
+    ${lib.optionalString stdenv.isLinux ''
+      wrapProgram $out/bin/animdustry \
+        --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath libs}" \
+        --set __GLX_VENDOR_LIBRARY_NAME "mesa"
+    ''}
+    install -Dm644 ./assets/icon.png $out/share/icons/hicolor/64x64/apps/animdustry.png
+    runHook postInstall
+  '';
 
   desktopItems = [
     (makeDesktopItem {
